@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Work — Brodie's Backyard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── TOKENS ── */
+:root {
+  --cream: #f7f8e6;
+  --green: #287d55;
+  --green-dark: #1c5c3e;
+  --white: #ffffff;
+  --black: #111111;
+  --text-dark: #1a2e22;
+  --text-muted: #4a6255;
+  --serif-elegant: 'Playfair Display', Georgia, serif;
+  --serif-bold: 'Libre Baskerville', Georgia, serif;
+  --sans: Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: var(--cream);
+  color: var(--text-dark);
+  font-family: var(--sans);
+  overflow-x: hidden;
+}
+
+/* ── HEADER / NAV ── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--cream);
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-logo-wrap {
+  padding: 18px 0 12px;
+}
+
+.header-logo-wrap img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+.header-nav-list {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  border-top: 1px solid rgba(40,125,85,0.18);
+  width: 100%;
+  justify-content: center;
+}
+
+.header-nav-list a {
+  display: block;
+  color: var(--green);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+
+.header-nav-list a:hover,
+.header-nav-list a.active { opacity: 1; }
+
+/* Mobile hamburger */
+.mobile-menu-toggle {
+  display: none;
+  position: absolute;
+  right: 24px;
+  top: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+.mobile-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--green);
+  transition: all 0.3s;
+}
+
+/* ── HERO COMPACT ── */
+.hero-compact {
+  background: url('./hero.avif') center/cover no-repeat;
+  min-height: 42vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.hero-content h1 {
+  font-family: var(--serif-elegant);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.hero-sub {
+  font-family: var(--sans);
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  font-weight: 400;
+}
+
+/* ── INTRO ── */
+.intro-section {
+  padding: 80px 40px 60px;
+  text-align: center;
+}
+
+.intro-section h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.intro-section p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ── FILTER TABS ── */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0 40px 56px;
+}
+
+.filter-btn {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid rgba(40,125,85,0.3);
+  background: transparent;
+  padding: 9px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
+/* ── MASONRY GALLERY ── */
+.gallery-section {
+  padding: 0 32px 80px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.masonry-grid {
+  columns: 3;
+  column-gap: 16px;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+/* Overlay on hover */
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 92, 62, 0);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  transition: background 0.35s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  background: rgba(28, 92, 62, 0.45);
+}
+
+.gallery-item-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0);
+  background: rgba(40,125,85,0.85);
+  padding: 6px 12px;
+  border-radius: 3px;
+  transform: translateY(8px);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-label {
+  color: #fff;
+  transform: translateY(0);
+}
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(10,20,14,0.93);
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 88vw;
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 2px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.65);
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+  font-weight: 300;
+}
+
+.lightbox-close:hover { color: #fff; }
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  background: var(--green-dark);
+  padding: 72px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1800&q=60') center/cover no-repeat;
+  opacity: 0.06;
+}
+
+.cta-strip-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-strip h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.cta-strip p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  max-width: 440px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.cta-strip a {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  background: var(--cream);
+  padding: 16px 36px;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cta-strip a:hover {
+  background: #fff;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--green-dark);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 24px 48px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .masonry-grid { columns: 2; }
+}
+
+@media (max-width: 600px) {
+  header { padding: 0 20px; }
+  .mobile-menu-toggle { display: flex; }
+  .header-nav-list {
+    display: none;
+    flex-direction: column;
+    background: var(--cream);
+    width: 100%;
+    border-top: none;
+    padding-bottom: 12px;
+  }
+  .header-nav-list.open { display: flex; }
+  .header-nav-list a { padding: 12px 24px; }
+
+  .hero-compact { min-height: 36vh; padding: 120px 24px 60px; }
+
+  .gallery-section { padding: 0 16px 60px; }
+  .masonry-grid { columns: 1; column-gap: 0; }
+  .masonry-grid .gallery-item { margin-bottom: 12px; }
+
+  .intro-section { padding: 60px 24px 40px; }
+  .filter-bar { padding: 0 24px 40px; }
+
+  .lightbox-nav { display: none; }
+  .lightbox { padding: 20px; }
+  .lightbox-img { max-width: 95vw; max-height: 80vh; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header id="header">
+  <div class="header-logo-wrap">
+    <a href="index.html"><img src="./logo.webp" alt="Brodie's Backyard"></a>
+  </div>
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+  <nav>
+    <ul class="header-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html" class="active">Our Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero-compact">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Our Work</h1>
+    <p class="hero-sub">Real jobs. Real results. Real backyards.</p>
+  </div>
+</section>
+
+<!-- ── INTRO ── -->
+<div class="intro-section">
+  <h2>Before & After — See the Difference</h2>
+  <p>Every backyard has a story. Browse through some of our recent jobs across Adelaide — from overgrown clearances to full garden transformations.</p>
+</div>
+
+<!-- ── FILTER BAR ── -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All Work</button>
+  <button class="filter-btn" data-filter="before-after">Before &amp; After</button>
+  <button class="filter-btn" data-filter="garden">Garden Work</button>
+  <button class="filter-btn" data-filter="mowing">Mowing</button>
+  <button class="filter-btn" data-filter="hedges">Hedges &amp; Trimming</button>
+</div>
+
+<!-- ── GALLERY ── -->
+<div class="gallery-section">
+  <div class="masonry-grid" id="gallery">
+
+    <!-- b4and_after.jpg — before & after (Forestville lawn) -->
+    <div class="gallery-item" data-category="before-after mowing" data-index="0" onclick="openLightbox(0)">
+      <img src="./b4and_after.jpg" alt="Before and after lawn mow – Forestville" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Before &amp; After</span>
+      </div>
+    </div>
+
+    <!-- after.jpg — freshly planted garden bed -->
+    <div class="gallery-item" data-category="garden" data-index="1" onclick="openLightbox(1)">
+      <img src="./after.jpg" alt="Freshly planted garden bed" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Garden Design</span>
+      </div>
+    </div>
+
+    <!-- tree_before_anda_fter.jpg — tree trim Hove -->
+    <div class="gallery-item" data-category="before-after hedges" data-index="2" onclick="openLightbox(2)">
+      <img src="./tree_before_anda_fter.jpg" alt="Tree trim before and after – Hove" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Before &amp; After · Hove</span>
+      </div>
+    </div>
+
+    <!-- before_and_after.jpg — verge tidy up -->
+    <div class="gallery-item" data-category="before-after mowing" data-index="3" onclick="openLightbox(3)">
+      <img src="./before_and_after.jpg" alt="Verge tidy up – before and after" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Before &amp; After</span>
+      </div>
+    </div>
+
+    <!-- befor.jpg — plants laid out before planting -->
+    <div class="gallery-item" data-category="garden" data-index="4" onclick="openLightbox(4)">
+      <img src="./befor.jpg" alt="Garden bed layout before planting" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Garden Install</span>
+      </div>
+    </div>
+
+    <!-- cool.jpg — hedge trimmed path Leabrook -->
+    <div class="gallery-item" data-category="hedges" data-index="5" onclick="openLightbox(5)">
+      <img src="./cool.jpg" alt="Hedge trimmed brick pathway – Leabrook" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Hedges · Leabrook</span>
+      </div>
+    </div>
+
+    <!-- b4and_afteer.jpg — before & after overgrown yard -->
+    <div class="gallery-item" data-category="before-after mowing" data-index="6" onclick="openLightbox(6)">
+      <img src="./b4and_afteer.jpg" alt="Overgrown yard cleared – before and after" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Before &amp; After</span>
+      </div>
+    </div>
+
+    <!-- meorer.jpg — hedge trim North Plympton -->
+    <div class="gallery-item" data-category="hedges" data-index="7" onclick="openLightbox(7)">
+      <img src="./meorer.jpg" alt="Hedge trim – North Plympton" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Hedges · North Plympton</span>
+      </div>
+    </div>
+
+    <!-- b41.jpg — garden bed after clearance Marleston -->
+    <div class="gallery-item" data-category="garden" data-index="8" onclick="openLightbox(8)">
+      <img src="./b41.jpg" alt="Garden bed cleared – Marleston" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Garden Clearance · Marleston</span>
+      </div>
+    </div>
+
+    <!-- before.jpg — before shot overgrown garden -->
+    <div class="gallery-item" data-category="garden" data-index="9" onclick="openLightbox(9)">
+      <img src="./before.jpg" alt="Overgrown garden before maintenance" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Garden Maintenance</span>
+      </div>
+    </div>
+
+    <!-- aftr1.jpg — after verge mow -->
+    <div class="gallery-item" data-category="mowing" data-index="10" onclick="openLightbox(10)">
+      <img src="./aftr1.jpg" alt="After verge mow result" loading="lazy">
+      <div class="gallery-item-overlay">
+        <span class="gallery-item-label">Lawn Mowing</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── CTA STRIP ── -->
+<section class="cta-strip">
+  <div class="cta-strip-inner">
+    <h2>Ready to transform your backyard?</h2>
+    <p>Get in touch for a free quote. We service Adelaide and surrounding suburbs.</p>
+    <a href="contact.html">Get a Free Quote</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2025 Brodie's Backyard. All rights reserved.</p>
+</footer>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8592;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8594;</button>
+  <span class="lightbox-caption" id="lightboxCaption"></span>
+</div>
+
+<script>
+
+// Nav toggle
+function toggleNav(){ document.querySelector('.header-nav-list').classList.toggle('open'); }
+
+// Gallery data — maps index to src + label
+const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+const images = galleryItems.map(el => ({
+  src: el.querySelector('img').src,
+  label: el.querySelector('.gallery-item-label').textContent.trim()
+}));
+
+let currentIndex = 0;
+let visibleIndices = images.map((_, i) => i); // all visible by default
+
+function openLightbox(index) {
+  currentIndex = visibleIndices.indexOf(index);
+  if (currentIndex === -1) currentIndex = 0;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+  const realIndex = visibleIndices[currentIndex];
+  document.getElementById('lightboxImg').src = images[realIndex].src;
+  document.getElementById('lightboxImg').alt = images[realIndex].label;
+  document.getElementById('lightboxCaption').textContent = images[realIndex].label;
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLightboxOnBg(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function navLightbox(dir) {
+  currentIndex = (currentIndex + dir + visibleIndices.length) % visibleIndices.length;
+  updateLightbox();
+}
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') navLightbox(1);
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    visibleIndices = [];
+    galleryItems.forEach((item, i) => {
+      const cats = item.dataset.category.split(' ');
+      const show = filter === 'all' || cats.includes(filter);
+      item.style.display = show ? 'block' : 'none';
+      if (show) visibleIndices.push(i);
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>

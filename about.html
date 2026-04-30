@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us — Brodie's Backyard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── TOKENS ── */
+:root {
+  --cream: #f7f8e6;
+  --green: #287d55;
+  --green-dark: #1c5c3e;
+  --white: #ffffff;
+  --black: #111111;
+  --text-dark: #1a2e22;
+  --text-muted: #4a6255;
+  --serif-elegant: 'Playfair Display', Georgia, serif;
+  --serif-bold: 'Libre Baskerville', Georgia, serif;
+  --sans: Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: var(--cream);
+  color: var(--text-dark);
+  font-family: var(--sans);
+  overflow-x: hidden;
+}
+
+/* ── HEADER / NAV ── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--cream);
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-logo-wrap {
+  padding: 18px 0 12px;
+}
+
+.header-logo-wrap img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+.header-nav-list {
+  display: flex;
+  list-style: none;
+  gap: 0;
+  border-top: 1px solid rgba(40,125,85,0.18);
+  width: 100%;
+  justify-content: center;
+}
+
+.header-nav-list a {
+  display: block;
+  color: var(--green);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+
+.header-nav-list a:hover { opacity: 1; }
+
+/* Mobile hamburger */
+.mobile-menu-toggle {
+  display: none;
+  position: absolute;
+  right: 24px;
+  top: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 30% / 50%;
+  padding: 6px;
+}
+.mobile-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--green);
+  transition: all 0.3s;
+}
+
+/* ── SECTION BASE ── */
+section {
+  width: 100%;
+  position: relative;
+}
+
+/* ── SECTION 1: HERO ── */
+#hero {
+  background: url('./hero.avif') center/cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 40px 100px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.42);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+}
+
+.hero-sub {
+  font-family: var(--sans);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 18px;
+  font-weight: 400;
+}
+
+.hero-content h1 {
+  font-family: var(--serif-elegant);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* ── SECTION 2: BELIEF + IMAGE GRID ── */
+#belief {
+  background: var(--cream);
+  padding: 100px 0 0;
+}
+
+.belief-text-wrap {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 40px 80px;
+}
+
+.belief-text-wrap h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  color: var(--text-dark);
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+
+
+.belief-text-wrap p {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+/* 4-image grid */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  height: 380px;
+}
+
+.image-grid-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.image-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.image-grid-item:hover img { transform: scale(1.05); }
+
+/* ── SECTION 3: SERVICES ── */
+#services {
+  background: var(--green-dark);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1800&q=60') center/cover no-repeat;
+  opacity: 0.08;
+}
+
+.services-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.services-heading {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.services-heading h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.services-heading p {
+  font-family: var(--sans);
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.service-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 40px 32px;
+  transition: background 0.25s;
+}
+
+.service-card:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.service-icon {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 20px;
+  opacity: 0.75;
+}
+
+.service-card h3 {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+}
+
+.services-cta {
+  text-align: center;
+  margin-top: 56px;
+}
+
+.services-cta a {
+  display: inline-block;
+  background: #fff;
+  color: var(--green-dark);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 15px 38px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.services-cta a:hover {
+  background: var(--cream);
+}
+
+/* ── SECTION 4: CONTACT / SAY G'DAY ── */
+#contact {
+  background: var(--cream);
+  padding: 100px 0;
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-info h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--text-dark);
+  margin-bottom: 36px;
+  letter-spacing: -0.01em;
+}
+
+
+.contact-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-details li {
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.contact-details li a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.contact-details li a:hover {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+.contact-details .label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 3px;
+}
+
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── FLOATING LABEL FIELDS ── */
+.form-field {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+/* Hide the old static labels – we use floating ones */
+.form-field > label {
+  display: none;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(40,125,85,0.35);
+  padding: 20px 0 6px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text-dark);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  width: 100%;
+  transition: border-color 0.25s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-bottom-color: var(--green);
+}
+
+.form-field textarea {
+  resize: none;
+  height: 90px;
+}
+
+.form-field select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23287d55' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  padding-right: 24px;
+}
+
+/* Floating label element */
+.form-field .float-label {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease, letter-spacing 0.2s ease, font-weight 0.2s ease;
+  letter-spacing: 0;
+}
+
+/* Floated state: input focused OR has content */
+.form-field input:focus ~ .float-label,
+.form-field input:not(:placeholder-shown) ~ .float-label,
+.form-field textarea:focus ~ .float-label,
+.form-field textarea:not(:placeholder-shown) ~ .float-label,
+.form-field select:focus ~ .float-label,
+.form-field.has-value .float-label {
+  top: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+/* Underline grow animation on focus */
+.form-field::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--green-dark);
+  transition: width 0.3s ease;
+}
+
+.form-field:focus-within::after {
+  width: 100%;
+}
+
+.form-submit {
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.btn-submit {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 8px;
+}
+
+.btn-submit:hover { background: var(--green-dark); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--green);
+  padding: 36px 48px;
+  text-align: center;
+}
+
+footer p {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .image-grid { grid-template-columns: repeat(2, 1fr); height: 480px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+  header { padding: 0 24px; }
+  .header-nav-list { display: none; }
+  .header-nav-list.open { display: flex; flex-direction: column; background: var(--cream); }
+  .header-nav-list.open a { border-top: 1px solid rgba(40,125,85,0.15); padding: 16px 24px; }
+  .mobile-menu-toggle { display: flex; }
+  .image-grid { grid-template-columns: 1fr 1fr; height: 400px; }
+  .contact-inner { padding: 0 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { padding: 28px 24px; }
+  #hero { padding: 140px 24px 80px; }
+  .belief-text-wrap { padding: 0 24px 60px; }
+  .services-inner { padding: 0 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ── FORM SUCCESS ── */
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.form-success.visible {
+  display: flex;
+  opacity: 1;
+}
+
+.success-tick {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-tick.pop {
+  transform: scale(1);
+}
+
+.success-tick svg {
+  width: 32px;
+  height: 32px;
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  fill: none;
+  transition: stroke-dashoffset 0.4s ease 0.3s;
+}
+
+.success-tick.pop svg {
+  stroke-dashoffset: 0;
+}
+
+.form-success h3 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.form-success p {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+
+/* ── COMPACT HERO (sub-pages) ── */
+.hero-compact {
+  min-height: 55vh;
+  padding: 150px 40px 80px;
+}
+@media (max-width: 767px) {
+  .hero-compact { min-height: 42vh; padding: 120px 24px 60px; }
+}
+
+/* ── ABOUT: values ── */
+.values-section {
+  background: var(--green-dark);
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+}
+.values-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1800&q=60') center/cover no-repeat;
+  opacity: 0.07;
+}
+.values-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.values-heading {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.values-heading h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+.values-heading p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.values-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 40px 32px;
+}
+.values-icon {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 20px;
+  opacity: 0.75;
+}
+.values-card h3 {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 12px;
+}
+.values-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+}
+@media (max-width: 900px) {
+  .values-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+  .values-inner { padding: 0 24px; }
+}
+
+/* ── CTA BANNER ── */
+.cta-section {
+  background: var(--cream);
+  padding: 90px 0;
+  text-align: center;
+}
+.cta-section h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.cta-section p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+.btn-cta {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 15px 38px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.btn-cta:hover { background: var(--green-dark); }
+
+/* ── ABOUT: STORY section ── */
+.story-section {
+  background: var(--cream);
+  padding: 90px 0 0;
+}
+.story-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 48px 80px;
+  text-align: center;
+}
+.story-inner h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  color: var(--text-dark);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.story-inner p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+  .story-inner { padding: 0 24px 60px; }
+}
+
+/* ── SERVICES: HOW IT WORKS ── */
+.how-section {
+  background: var(--cream);
+  padding: 90px 0;
+}
+.how-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.how-heading {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.how-heading h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+.how-heading p {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.step-card {
+  text-align: center;
+  padding: 0 16px;
+}
+.step-number {
+  font-family: var(--serif-elegant);
+  font-size: 3.5rem;
+  font-style: italic;
+  color: var(--green);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 16px;
+  display: block;
+}
+.step-card h3 {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.step-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+@media (max-width: 767px) {
+  .steps-grid { grid-template-columns: 1fr; gap: 40px; }
+  .how-inner { padding: 0 24px; }
+}
+
+/* ── CONTACT: service area ── */
+.area-section {
+  background: var(--cream);
+  padding: 80px 0;
+  border-top: 1px solid rgba(40,125,85,0.12);
+}
+.area-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 48px;
+  text-align: center;
+}
+.area-inner h2 {
+  font-family: var(--serif-elegant);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.area-inner p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.area-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 28px;
+}
+.area-tag {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid rgba(40,125,85,0.3);
+  padding: 7px 16px;
+  border-radius: 4px;
+}
+@media (max-width: 767px) {
+  .area-inner { padding: 0 24px; }
+}
+
+
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="header-logo-wrap">
+    <a href="index.html"><img src="./logo.webp" alt="Brodie's Backyard"></a>
+  </div>
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+  <nav>
+    <ul class="header-nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Our Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- ── HERO ── -->
+<section id="hero" class="hero-compact">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Our Story</h1>
+    <p class="hero-sub">Locally owned &amp; operated — Plympton, SA</p>
+  </div>
+</section>
+
+<!-- ── STORY ── -->
+<section class="story-section">
+  <div class="story-inner">
+    <h2>Who We Are</h2>
+    <p>Brodie's Backyard was built on a simple idea: every home deserves an outdoor space to be proud of. What started as a passion for working outdoors and helping neighbours has grown into a fully-fledged landscaping and garden care business serving Adelaide and the surrounding suburbs.</p>
+    <p>We're not a big faceless company. We're a small, hands-on team that takes real pride in the work we do — from the sharpness of an edged lawn to the final sweep after a landscaping job. We show up on time, we work hard, and we leave your property looking better than we found it.</p>
+    <p>Whether it's a quick weekly mow or a complete backyard transformation, we bring the same care and attention to every single job. That's the Brodie's Backyard difference.</p>
+  </div>
+</section>
+
+<!-- ── IMAGE GRID ── -->
+<section>
+  <div class="image-grid">
+    <div class="image-grid-item">
+      <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" alt="Backyard landscaping">
+    </div>
+    <div class="image-grid-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Garden design">
+    </div>
+    <div class="image-grid-item">
+      <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80" alt="Outdoor entertaining">
+    </div>
+    <div class="image-grid-item">
+      <img src="https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=800&q=80" alt="Lawn care">
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="values-heading">
+      <h2>What Drives Us</h2>
+      <p>Three principles guide everything we do at Brodie's Backyard.</p>
+    </div>
+    <div class="values-grid">
+
+      <div class="values-card">
+        <svg class="values-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 34C8 34 12 20 21 14C30 8 36 10 36 10C36 10 34 16 28 22C22 28 8 34 8 34Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 34L14 28" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Quality Workmanship</h3>
+        <p>We take pride in every cut, edge, and planted bed. If it's got our name on it, it's done properly — no shortcuts, no half measures.</p>
+      </div>
+
+      <div class="values-card">
+        <svg class="values-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="21" cy="21" r="13" stroke="white" stroke-width="1.5"/>
+          <path d="M21 13V21L26 26" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>On Time, Every Time</h3>
+        <p>We know your time is valuable. We book a time, we show up at that time, and we get the job done without you having to chase us.</p>
+      </div>
+
+      <div class="values-card">
+        <svg class="values-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 32C10 32 10 24 16 20C22 16 32 18 32 18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 32C10 32 18 30 22 24C26 18 24 10 24 10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="10" cy="32" r="2" fill="white"/>
+        </svg>
+        <h3>No Mess Left Behind</h3>
+        <p>We clean up after ourselves, always. All clippings, waste, and off-cuts get hauled away so your yard is spotless when we leave.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <h2>Ready to Transform Your Backyard?</h2>
+  <p>Get in touch today for a free, no-obligation quote. We service Plympton and all surrounding Adelaide suburbs.</p>
+  <a href="contact.html" class="btn-cta">Get a Free Quote</a>
+</section>
+
+
+<footer>
+  <p>&copy; 2025 Brodie's Backyard. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleNav(){document.querySelector('.header-nav-list').classList.toggle('open');}
+</script>
+
+</body>
+</html>
